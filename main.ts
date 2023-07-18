@@ -11,7 +11,7 @@
 /**
  *EuRate Makecode extension
  */
-//% weight=10 color=#DF6721 icon="\uf11b" block="Eu Rate library"
+//% weight=10 color=#DF6721 icon="\uf11b" block="Eu Rate library DE"
 namespace eurate {
 
     const PCA9685_ADDRESS = 0x40
@@ -110,9 +110,9 @@ namespace eurate {
      * The user defines the motor rotation direction.
      */
     export enum Dir {
-        //% blockId="CW" block="CW"
+        //% blockId="CW" block="iU"
         CW = 1,
-        //% blockId="CCW" block="CCW"
+        //% blockId="CCW" block="gU"
         CCW = -1,
     }
 
@@ -120,16 +120,16 @@ namespace eurate {
      * The user defines the straight line direction.
      */
     export enum TwoDDir {
-        //% blockId="FW" block="FW"
+        //% blockId="FW" block="V"
         FW = 1,
-        //% blockId="BW" block="BW"
+        //% blockId="BW" block="R"
         BW = -1,
     }
 
     export enum DirRot {
-        //% blockId="Right" block="Right"
+        //% blockId="Right" block="Rechts"
         Right = 1,
-        //% blockId="Left" block="Left"
+        //% blockId="Left" block="Links"
         Left = -1,
     }
 
@@ -262,10 +262,9 @@ namespace eurate {
      * S1~S8.
      * 0°~180°.
     */
-    //% blockId=motor_servo block="Winkel %degree|vom Servomotor %index"
+    //% blockId=motor_servo block="Winkel|%degree|vom Servomotor|%index"
     //% weight=100
     //% degree.min=0 degree.max=180
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=4
     export function servo(index: Servos, degree: number): void {
         if (!initialized) {
             initPCA9685()
@@ -284,8 +283,6 @@ namespace eurate {
     //% weight=90
     //% blockId=motor_MotorRun block="Motor|%index|Richtung|%Dir|Geschindigkeit|%speed"
     //% speed.min=0 speed.max=255
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
-    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
     export function MotorRun(index: Motors, direction: Dir, speed: number): void {
         if (!initialized) {
             initPCA9685()
@@ -316,8 +313,6 @@ namespace eurate {
     */
     //% weight=80
     //% blockId=motor_stepperDegree_42 block="Stepper 42|%index|Richtung|%direction|Winkel|%degree"
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
-    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
     export function stepperDegree_42(index: Steppers, direction: Dir, degree: number): void {
         if (!initialized) {
             initPCA9685()
@@ -347,8 +342,6 @@ namespace eurate {
     */
     //% weight=70
     //% blockId=motor_stepperTurn_42 block="Stepper 42|%index|Richtung|%direction|Drehung|%turn"
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
-    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
     export function stepperTurn_42(index: Steppers, direction: Dir, turn: number): void {
         if (turn == 0) {
             return;
@@ -363,8 +356,6 @@ namespace eurate {
     */
     //% weight=60
     //% blockId=motor_stepperDegree_28 block="Stepper 28|%index|Richtung|%direction|Winkel|%degree"
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
-    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
     export function stepperDegree_28(index: Steppers, direction: Dir, degree: number): void {
         if (!initialized) {
             initPCA9685()
@@ -394,8 +385,6 @@ namespace eurate {
     */
     //% weight=50
     //% blockId=motor_stepperTurn_28 block="Stepper 28|%index|Richtung|%direction|Drehung|%turn"
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
-    //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
     export function stepperTurn_28(index: Steppers, direction: Dir, turn: number): void {
         if (turn == 0) {
             return;
@@ -409,9 +398,6 @@ namespace eurate {
     */
     //% weight=40
     //% blockId=motor_stepperDegreeDual_42 block="dualer Stepper %stepper|M1_M2 Richtung %direction1|Winkel %degree1|M3_M4 Richtung %direction2|Winkel %degree2"
-    //% stepper.fieldEditor="gridpicker" stepper.fieldOptions.columns=2
-    //% direction1.fieldEditor="gridpicker" direction1.fieldOptions.columns=2
-    //% direction2.fieldEditor="gridpicker" direction2.fieldOptions.columns=2
     export function stepperDegreeDual_42(stepper: Stepper, direction1: Dir, degree1: number, direction2: Dir, degree2: number): void {
         if (!initialized) {
             initPCA9685()
@@ -501,9 +487,6 @@ namespace eurate {
     */
     //% weight=30
     //% blockId=motor_stepperTurnDual_42 block="dualer Stepper %stepper|M1_M2 Richtung %direction1|Drehung %trun1|M3_M4 Richtung %direction2|Drehung %trun2"
-    //% stepper.fieldEditor="gridpicker" stepper.fieldOptions.columns=2
-    //% direction1.fieldEditor="gridpicker" direction1.fieldOptions.columns=2
-    //% direction2.fieldEditor="gridpicker" direction2.fieldOptions.columns=2
     export function stepperTurnDual_42(stepper: Stepper, direction1: Dir, trun1: number, direction2: Dir, trun2: number): void {
         if ((trun1 == 0) && (trun2 == 0)) {
             return;
@@ -526,7 +509,6 @@ namespace eurate {
     */
     //% weight=20
     //% blockId=motor_motorStop block="Motor aus|%index"
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
     export function motorStop(index: Motors) {
         setPwm((4 - index) * 2, 0, 0);
         setPwm((4 - index) * 2 + 1, 0, 0);
