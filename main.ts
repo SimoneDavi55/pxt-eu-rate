@@ -11,7 +11,7 @@
 /**
  *EuRate Makecode extension
  */
-//% weight=10 color=#DF6721 icon="\uf11b" block="Eu Rate library de"
+//% weight=10 color=#DF6721 icon="\uf11b" block="Eu Rate library"
 namespace eurate {
 
     const PCA9685_ADDRESS = 0x40
